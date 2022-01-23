@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firebaserestapisample.R
 import com.example.firebaserestapisample.model.User
 import kotlinx.android.synthetic.main.item_user.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class UserListAdapter(private val users: ArrayList<User>,
                       private val context: Context
@@ -27,9 +29,9 @@ class UserListAdapter(private val users: ArrayList<User>,
 
     override fun onBindViewHolder(holder: UserListViewHolder, position: Int) {
         val user = users[position]
-        holder.nameTV.text = user.name ?: ""
+        holder.nameTV.text = user.name?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } ?: ""
         holder.emailTV.text = user.email ?: ""
-        holder.phoneTV.text = user.phone ?: ""
+        holder.phoneTV.text = user.phone
 
         holder.itemView.setOnClickListener {
             val navController = Navigation.findNavController(holder.itemView)

@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.firebaserestapisample.R
 import com.example.firebaserestapisample.datasource.DataRequestState
 import com.example.firebaserestapisample.model.User
@@ -42,7 +44,9 @@ class ListFragment : Fragment() {
     }
 
     private fun initializeRecyclerViewWithAdapter(){
-        rv_users.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        rv_users.layoutManager = layoutManager
+        rv_users.addItemDecoration(DividerItemDecoration(context,layoutManager.orientation))
         userListAdapter = UserListAdapter(usersList, requireContext())
         rv_users.adapter = userListAdapter
     }

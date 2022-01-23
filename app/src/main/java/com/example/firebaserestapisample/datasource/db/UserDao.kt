@@ -14,5 +14,8 @@ interface UserDao {
     fun getAllUsers(): List<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(items: List<User>): List<Long>
+    fun insertAll(items: Collection<User>): List<Long>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertUser(user: User): Long
 }
