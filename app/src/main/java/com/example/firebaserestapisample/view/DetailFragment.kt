@@ -18,7 +18,6 @@ import com.example.firebaserestapisample.model.User
 import com.example.firebaserestapisample.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.detail_fragment.*
 import kotlinx.android.synthetic.main.detail_fragment.progressBar
-import kotlinx.android.synthetic.main.list_fragment.*
 
 class DetailFragment : Fragment() {
 
@@ -37,6 +36,18 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         user = args.user
+        activity?.setActionBar(toolbar)
+        val actionBar = activity?.actionBar
+        // add back arrow to toolbar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setDisplayShowHomeEnabled(true)
+            actionBar.setTitle(if(user == null) R.string.add_user else R.string.user_detail)
+            toolbar.setNavigationOnClickListener {
+                Navigation.findNavController(toolbar).popBackStack()
+            }
+        }
+
         tv_name.isEnabled = user == null
         tv_email.isEnabled = user == null
         tv_phone.isEnabled = user == null
