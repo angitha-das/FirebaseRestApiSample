@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FirebaseRestApiSample</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="add_user">Add User</string>
+    <string name="save">Save</string>
 </resources>
