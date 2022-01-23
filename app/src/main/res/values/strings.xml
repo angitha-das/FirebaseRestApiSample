@@ -12,4 +12,5 @@
     <string name="user_addition_failed">User Addition Failed</string>
     <string name="users_list">Users List</string>
     <string name="user_detail">User Detail</string>
+    <string name="no_users_to_display">Add user and it will show up here.</string>
 </resources>

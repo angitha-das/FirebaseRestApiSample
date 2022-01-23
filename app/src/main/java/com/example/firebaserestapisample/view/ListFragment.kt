@@ -80,6 +80,8 @@ class ListFragment : Fragment() {
     }
 
     private fun updateUI(users: List<User>) {
+        tv_no_users_text.visibility = if(users.isEmpty()) View.VISIBLE else View.GONE
+        rv_users.visibility = if(users.isNotEmpty()) View.VISIBLE else View.GONE
         usersList.clear()
         usersList.addAll(users)
         userListAdapter?.notifyDataSetChanged()
