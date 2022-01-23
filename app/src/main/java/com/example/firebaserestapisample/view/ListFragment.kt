@@ -10,7 +10,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.firebaserestapisample.R
 import com.example.firebaserestapisample.datasource.DataRequestState
 import com.example.firebaserestapisample.model.User
