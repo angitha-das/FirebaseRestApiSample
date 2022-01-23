@@ -1,37 +1,24 @@
 package com.example.firebaserestapisample.view
 
-import android.app.AlertDialog
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.BlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.firebaserestapisample.R
 import com.example.firebaserestapisample.datasource.DataRequestState
 import com.example.firebaserestapisample.model.User
 import com.example.firebaserestapisample.viewmodel.DetailViewModel
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.detail_fragment.*
-import androidx.core.content.ContextCompat.getSystemService
-import android.app.Activity
-import android.content.Context.INPUT_METHOD_SERVICE
-
-import androidx.core.content.ContextCompat.getSystemService
-
-
-
-
-
-
+import kotlinx.android.synthetic.main.detail_fragment.progressBar
+import kotlinx.android.synthetic.main.list_fragment.*
 
 class DetailFragment : Fragment() {
 
@@ -92,10 +79,12 @@ class DetailFragment : Fragment() {
                     showProgress()
                 }
                 DataRequestState.Status.SUCCESS -> {
-                    Toast.makeText(context,"User Added Successfully!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,resources.getString(R.string.user_added_successfully), Toast.LENGTH_SHORT).show()
                     hideProgress()
+                    Navigation.findNavController(button_save).popBackStack()
                 }
                 DataRequestState.Status.FAILED -> {
+                    Toast.makeText(context,resources.getString(R.string.user_addition_failed), Toast.LENGTH_SHORT).show()
                     hideProgress()
                 }
             }
