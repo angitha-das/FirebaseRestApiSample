@@ -1,0 +1,2 @@
+rootProject.name = "FirebaseRestApiSample"
+include ':app'
