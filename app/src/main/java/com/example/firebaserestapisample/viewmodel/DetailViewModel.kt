@@ -10,6 +10,7 @@ import com.example.firebaserestapisample.model.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.HttpURLConnection
 
 class DetailViewModel(application: Application) : AndroidViewModel(application) {
     private var db: AppDatabase = AppDatabase.getInstance(application.applicationContext)
@@ -19,7 +20,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         dataRequestState.postValue(DataRequestState.LOADING)
         ApiClient.getInstance().apiService.insertUser(user).enqueue(object : Callback<Response<String>> {
             override fun onResponse(call: Call<Response<String>>, response: Response<Response<String>>) {
-                if (response.isSuccessful && response.code() == 200) {
+                if (response.isSuccessful && response.code() == HttpURLConnection.HTTP_OK) {
                     db.userDao().insertUser(user)
                     dataRequestState.postValue(DataRequestState.LOADED)
                 } else {

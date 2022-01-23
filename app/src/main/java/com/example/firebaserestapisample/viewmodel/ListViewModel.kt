@@ -10,6 +10,7 @@ import com.example.firebaserestapisample.model.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.HttpURLConnection
 
 class ListViewModel(application: Application) : AndroidViewModel(application) {
     private var db: AppDatabase = AppDatabase.getInstance(application.applicationContext)
@@ -24,7 +25,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
         dataRequestState.postValue(DataRequestState.LOADING)
         ApiClient.getInstance().apiService.getAllUsers().enqueue(object : Callback<Map<String,User>> {
             override fun onResponse(call: Call<Map<String,User>>, response: Response<Map<String,User>>) {
-                if (response.isSuccessful && response.code() == 200) {
+                if (response.isSuccessful && response.code() == HttpURLConnection.HTTP_OK) {
                     response.body()?.let { users ->
                       db.userDao().insertAll(users.values)
                     }
