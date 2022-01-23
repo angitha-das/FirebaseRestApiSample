@@ -17,7 +17,6 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
     var usersLiveData: MutableLiveData<List<User>> = MutableLiveData()
 
     init {
-
         fetchAllUsersFromFirebase()
     }
 
