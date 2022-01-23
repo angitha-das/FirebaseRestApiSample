@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.example.firebaserestapisample.ListFragment"
+        android:name="com.example.firebaserestapisample.view.ListFragment"
         android:label="list_fragment"
         tools:layout="@layout/list_fragment" >
         <action
@@ -17,7 +17,13 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.firebaserestapisample.DetailFragment"
+        android:name="com.example.firebaserestapisample.view.DetailFragment"
         android:label="detail_fragment"
-        tools:layout="@layout/detail_fragment" />
+        tools:layout="@layout/detail_fragment" >
+        <argument
+            android:name="user"
+            app:argType="com.example.firebaserestapisample.model.User"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+    </fragment>
 </navigation>
